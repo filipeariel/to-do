@@ -7,7 +7,13 @@
   gap: 0.5rem;
 }
 
-.header>input {
+.header form {
+  display: flex;
+  width: 100%;
+  gap: 0.5rem
+}
+
+.header input {
   width: 100%;
   padding: 1rem;
   background: var(--gray-500);
@@ -16,11 +22,11 @@
   color: var(--gray-100);
 }
 
-.header>input:focus {
+.header input:focus {
   outline: 1px solid var(--purple-dark)
 }
 
-.header>button {
+.header button {
   background: var(--blue-dark);
   color: var(--gray-100);
   border: 1px solid var(--gray-700);
@@ -36,6 +42,6 @@
   transition: background-color 0.2s
 }
 
-.header>button:hover {
+.header button:hover {
   background: var(--blue);
 }

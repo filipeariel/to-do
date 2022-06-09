@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { PlusCircle } from 'phosphor-react';
 
 import styles from './TaskForm.module.css'
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { Task } from './Task';
 
 interface Task {
@@ -30,7 +30,7 @@ export function TaskForm() {
     console.log(completedTasks)
   }, [tasks])
 
-  function handleCreateNewTask(event: ChangeEvent<HTMLInputElement>) {
+  function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
     const createNewTask = {
       id: uuidv4(),
@@ -63,11 +63,13 @@ export function TaskForm() {
   return (
     <>
       <header className={styles.header}>
-        <input type="text" placeholder='Adicione uma nova tarefa' value={newTask} onChange={() => setNewTask(event.target.value)} />
-        <button onClick={handleCreateNewTask} type="submit">
-          Criar
-          <PlusCircle size={20} />
-        </button>
+        <form onSubmit={handleCreateNewTask}>
+          <input type="text" placeholder='Adicione uma nova tarefa' value={newTask} onChange={(event) => setNewTask(event.target.value)} />
+          <button type="submit">
+            Criar
+            <PlusCircle size={20} />
+          </button>
+        </form>
       </header>
       <Task
         tasks={tasks}
